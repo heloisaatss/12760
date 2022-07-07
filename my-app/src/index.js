@@ -7,34 +7,44 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-// function BoasVindas(props) {
-//   return <Opa name={props.name}></Opa>
-// }
-
-class Chegada extends React.Component {
+class Pesquisa extends React.Component {
   render() {
-    return <h1>Opa, {this.props.name}</h1>
+    return <h1>Componente de pesquisa</h1>
   }
 }
 
-class BoasVindas extends React.Component {
+class ListaProdutos extends React.Component {
   render() {
-    return <Chegada name={this.props.name}></Chegada>
+    return <div>
+      <h2>Lista de resultado</h2>
+      <Categoria></Categoria>
+      <Itens></Itens>
+      <Itens></Itens>
+      <Itens></Itens>
+      <Categoria></Categoria>
+      <Itens></Itens>
+      <Itens></Itens>
+      <Itens></Itens>
+    </div>
   }
 }
 
-function Opa(props) {
-  return <div>
-    <BoasVindas name={props.name}></BoasVindas>
-    <BoasVindas name={props.name}></BoasVindas>
-  </div>
+class Categoria extends React.Component {
+  render() {
+    return <h3>Componente Categoria</h3>
+  }
+}
 
+class Itens extends React.Component {
+  render() {
+    return <h4>Componente Itens</h4>
+  }
 }
 
 root.render(
   <div>
-    <Opa name='Pessoa 01'></Opa>
-    <Opa name='Pessoa 04'></Opa>
+    <Pesquisa></Pesquisa>
+    <ListaProdutos></ListaProdutos>
   </div>
 );
 
