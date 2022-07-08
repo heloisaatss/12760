@@ -6,52 +6,38 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-class Cadastro extends React.Component {
-  render() {
-    return <h1>Cadastro de Usuário</h1>
+class Relogio extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
   }
-}
 
-class DadosBasicos extends React.Component {
-  render() {
-    return <div>
-      <h2>Dados Básicos</h2>
-      <p>Nome:</p>
-      <p>Sobrenome:</p>
-      <p>Idade:</p>
-    </div>
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000);
   }
-}
 
-class Endereco extends React.Component {
-  render() {
-    return <div>
-      <h2>{this.props.tipo}</h2>
-      <p>Logradouro:</p>
-      <p>CEP:</p>
-      <p>Cidade/Estado:</p>
-    </div>
+  componentWillUnmount() {
+    clearInterval(this.timerID)
   }
-}
 
-class AreaAtuacao extends React.Component {
+  tick() {
+    this.setState({ date: new Date() })
+    console.log(this.state.date)
+  }
+
   render() {
-    return <div>
-      <h3>{this.props.title}</h3>
-      <p>{this.props.description}</p>
-    </div>
+    return (
+      <div>
+        <h1>Opa!!</h1>
+        <h2>Hora agora: {this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    );
   }
 }
 
 root.render(
   <div>
-    <Cadastro></Cadastro>
-    <DadosBasicos></DadosBasicos>
-    <Endereco tipo='Endereço Residencial'></Endereco>
-    <Endereco tipo='Endereço Comercial'></Endereco>
-    <AreaAtuacao title='Gerente' description='Descrição xxx'></AreaAtuacao>
-    <AreaAtuacao title='Analista' description='Descrição xxx'></AreaAtuacao>
-    <AreaAtuacao title='Assistente' description='Descrição xxx'></AreaAtuacao>
+    <Relogio></Relogio>
   </div>
 );
 
