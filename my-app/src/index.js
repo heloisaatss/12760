@@ -12,26 +12,17 @@ class Lista extends React.Component {
     super(props)
     this.state = {
       dados: [{
-        "cep": "20260-080",
-        "logradouro": "xpto",
-        "complemento": "até 392/393",
-        "bairro": "abc",
-        "localidade": "Curitiba",
-        "uf": "RJ"
+        "nome": "Maria",
+        "sobrenome": "Santos",
+        "idade": "40",
       }, {
-        "cep": "20260-080",
-        "logradouro": "xpto 01",
-        "complemento": "até 392/393",
-        "bairro": "jk",
-        "localidade": "Curitiba",
-        "uf": "RJ"
+        "nome": "João",
+        "sobrenome": "Silva",
+        "idade": "53",
       }, , {
-        "cep": "20260-080",
-        "logradouro": "xpto 02",
-        "complemento": "até 392/393",
-        "bairro": "jk",
-        "localidade": "Curitiba",
-        "uf": "RJ"
+        "nome": "José",
+        "sobrenome": "Souza",
+        "idade": "60",
       }]
     }
   }
@@ -39,9 +30,9 @@ class Lista extends React.Component {
   render() {
     return (
       <div>
-        <h2>Opa</h2>
+        <h2>Dados Básicos</h2>
         <ul>
-          {this.state.dados.map((endereco) => <li>{endereco.logradouro}</li>)}
+          {this.state.dados.map((dados) => <li>{dados.nome} {dados.sobrenome} {dados.idade}</li>)}
         </ul>
       </div>
     )
