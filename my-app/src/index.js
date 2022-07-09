@@ -6,40 +6,53 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-class Relogio extends React.Component {
+
+class Lista extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID)
-  }
-
-  tick() {
-    this.setState({ date: new Date() })
-    console.log(this.state.date)
+    super(props)
+    this.state = {
+      dados: [{
+        "cep": "20260-080",
+        "logradouro": "xpto",
+        "complemento": "até 392/393",
+        "bairro": "abc",
+        "localidade": "Curitiba",
+        "uf": "RJ"
+      }, {
+        "cep": "20260-080",
+        "logradouro": "xpto 01",
+        "complemento": "até 392/393",
+        "bairro": "jk",
+        "localidade": "Curitiba",
+        "uf": "RJ"
+      }, , {
+        "cep": "20260-080",
+        "logradouro": "xpto 02",
+        "complemento": "até 392/393",
+        "bairro": "jk",
+        "localidade": "Curitiba",
+        "uf": "RJ"
+      }]
+    }
   }
 
   render() {
     return (
       <div>
-        <h1>Opa!!</h1>
-        <h2>Hora agora: {this.state.date.toLocaleTimeString()}</h2>
+        <h2>Opa</h2>
+        <ul>
+          {this.state.dados.map((endereco) => <li>{endereco.logradouro}</li>)}
+        </ul>
       </div>
-    );
+    )
   }
 }
 
+
 root.render(
-  <div>
-    <Relogio></Relogio>
-  </div>
-);
+  <Lista />
+)
+
 
 
 // If you want to start measuring performance in your app, pass a function
