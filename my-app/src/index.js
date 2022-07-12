@@ -4,30 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ListaService from './services/ListaService';
+import Opa from './components/Opa';
+import Opa1 from './components/Opa1';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-class Opa extends React.Component {
-  render() {
-    const mystyle = {
-      color: "white",
-      backgroundColor: "DodgerBlue",
-      padding: "50px",
-      fontFamily: "Arial"
-    };
-
-    return (<div>
-      <h1 style={mystyle}>Opa, {this.props.name}</h1>
-    </div>
-    )
-  }
-}
 
 
-        root.render(
-        <Opa />
-        )
+root.render(<div>
+  <Opa1 name="Opa1"></Opa1>
+  <Opa name="Opa" />
+</div>
+
+)
 
 
 
