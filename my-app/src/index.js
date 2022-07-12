@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -5,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ListaService from './services/ListaService';
 import Opa from './components/Opa';
-import Opa1 from './components/Opa1';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,7 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(<div>
-  <Opa1 name="Opa1"></Opa1>
   <Opa name="Opa" />
 </div>
 

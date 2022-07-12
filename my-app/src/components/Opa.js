@@ -7,6 +7,7 @@ class Opa extends React.Component {
 
         return (<div>
             <h1>Opa, {this.props.name}</h1>
+            <button className="btn btn-primary">Opa!!!</button>
         </div>
         )
     }
