@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ListaService from './services/ListaService';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -11,28 +12,23 @@ class Lista extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dados: [{
-        "nome": "Maria",
-        "sobrenome": "Santos",
-        "idade": "40",
-      }, {
-        "nome": "João",
-        "sobrenome": "Silva",
-        "idade": "53",
-      }, , {
-        "nome": "José",
-        "sobrenome": "Souza",
-        "idade": "60",
-      }]
+      lista: []
     }
+  }
+
+  componentDidMount() {
+    ListaService.getLista().then((res) => {
+      console.log(res)
+      this.setState({ lista: res.data })
+    })
   }
 
   render() {
     return (
       <div>
-        <h2>Dados Básicos</h2>
+        <h2>Opa! Teste de lista de produtos</h2>
         <ul>
-          {this.state.dados.map((dados) => <li>{dados.nome} {dados.sobrenome} {dados.idade}</li>)}
+          {this.state.lista.map((produto) => <li key={produto.codigo}>{produto.codigo} - {produto.nome}</li>)}
         </ul>
       </div>
     )
