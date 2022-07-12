@@ -8,37 +8,26 @@ import ListaService from './services/ListaService';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-class Lista extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      lista: []
-    }
-  }
-
-  componentDidMount() {
-    ListaService.getLista().then((res) => {
-      console.log(res)
-      this.setState({ lista: res.data })
-    })
-  }
-
+class Opa extends React.Component {
   render() {
-    return (
-      <div>
-        <h2>Opa! Teste de lista de produtos</h2>
-        <ul>
-          {this.state.lista.map((produto) => <li key={produto.codigo}>{produto.codigo} - {produto.nome}</li>)}
-        </ul>
-      </div>
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "50px",
+      fontFamily: "Arial"
+    };
+
+    return (<div>
+      <h1 style={mystyle}>Opa, {this.props.name}</h1>
+    </div>
     )
   }
 }
 
 
-root.render(
-  <Lista />
-)
+        root.render(
+        <Opa />
+        )
 
 
 
