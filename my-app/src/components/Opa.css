@@ -1,7 +1,11 @@
-
-h1{
+h1 {
     background-color: rgb(210, 201, 206);
 }
-.btnCustom{
-    background-color: rgb(215, 137, 42);
+
+.ativo {
+    color: green
+}
+
+.inativo {
+    color: yellow
 }

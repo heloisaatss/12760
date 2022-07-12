@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -14,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(<div>
-  <Opa name="Opa" />
+  <Opa name="Opa passando pelo state" />
 </div>
 
 )
