@@ -2,12 +2,12 @@ import axios from 'axios'
 
 const BASE_URL = "https://app12759.herokuapp.com/prd"
 
-class ListaService {
+class ProductServices {
 
-    getLista() {
+    getProducts() {
        return axios.get(BASE_URL);
     }
 
 }
 
-export default new ListaService()
+export default new ProductServices()

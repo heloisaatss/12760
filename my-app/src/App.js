@@ -8,12 +8,16 @@ import CreateProductComponent from './components/CreateProductComponent'
 
 function App() {
   return (<div>
-    <HeaderComponent />
-    <div className='container'>
-      <ListProductComponent />
-      <CreateProductComponent />
-    </div>
-    <FooterComponent />
+    <Router>
+      <HeaderComponent />
+      <div className='container'>
+        <Switch>
+          <Route path="/" exact component={ListProductComponent} ></Route>
+          <Route path="/add-product" exact component={CreateProductComponent} ></Route>
+        </Switch>
+      </div>
+      <FooterComponent />
+    </Router>
   </div>
   );
 }

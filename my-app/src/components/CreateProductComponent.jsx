@@ -8,7 +8,7 @@ class CreateProductComponent extends Component {
     render() {
         return (
             <div>
-                <h1>Criar Produto</h1>
+                <h2 className="text-center">Criar Produto</h2>
             </div>
         )
     }
