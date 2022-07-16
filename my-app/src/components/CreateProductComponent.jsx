@@ -34,7 +34,7 @@ class CreateProductComponent extends Component {
         this.setState({ descricao: event.target.value })
     }
 
-    saveProduct = (e) => {
+    saveProduct = async (e) => {
         e.preventDefault();
 
         let product = {
@@ -42,9 +42,10 @@ class CreateProductComponent extends Component {
             nome: this.state.nome,
             descricao: this.state.descricao
         }
-        ProductServices.createProduct(product).then(res => {
-            alert(res.data)
-        })
+        let res = await (await ProductServices.createProduct(product)).data
+
+        alert(res)
+        this.productList();
     }
 
     render() {

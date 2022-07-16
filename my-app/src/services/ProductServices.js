@@ -8,6 +8,23 @@ class ProductServices {
         return axios.get(BASE_URL);
     }
 
+    async getProdutByCodigo(codigo) {
+        let URL = BASE_URL + '/' + codigo;
+
+        let product = ''
+
+        try {
+            product = await (await axios.get(URL)).data;
+            console.log('json, resposta da api => ' + product.nome)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+        return product;
+    }
+
+
     createProduct(product) {
         return axios.post(BASE_URL, product)
     }

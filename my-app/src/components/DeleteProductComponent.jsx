@@ -5,21 +5,40 @@ class DeleteProductComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            codigo: this.props.match.params.codigo
+            codigo: this.props.match.params.codigo,
+            descricaoView: ''
         }
 
         this.deleteProduct = this.deleteProduct.bind(this)
+        this.productList = this.productList.bind(this);
     }
 
     productList() {
         this.props.history.push('/')
     }
 
-    deleteProduct(e) {
+    async componentDidMount() {
+        let product = await ProductServices.getProdutByCodigo(this.state.codigo);
+        this.setState({ descricaoView: product.codigo + ' - ' + product.nome + ' - ' + product.descricao })
+
+
+    }
+
+    deleteProduct = async (e) => {
         e.preventDefault();
-        ProductServices.deleteProduct(this.state.codigo).then(res => {
-            alert(res.data)
-        })
+        // ProductServices.deleteProduct(this.state.codigo).then(res => {
+        //     alert(res.data)
+        // })
+
+
+        try {
+            let res = await ProductServices.deleteProduct(this.state.codigo)
+            alert(res.data);
+            this.productList();
+
+        } catch (error) {
+            alert(error)
+        }
 
     }
 
@@ -31,8 +50,8 @@ class DeleteProductComponent extends React.Component {
                     <div className="card-body">
                         <form>
                             <div className="form-group">
-                                <label>Código</label>
-                                <div>{this.state.codigo}</div>
+                                <label>Deseja excluir o produto?</label>
+                                <div>{this.state.descricaoView}</div>
                             </div>
 
                             <button className="btn btn-danger" onClick={this.deleteProduct} >Excluir</button>

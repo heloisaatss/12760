@@ -17,9 +17,6 @@ class ListProductComponent extends React.Component {
             this.setState({ products: res.data })
             console.log(res.data)
         })
-
-
-
     }
 
     addProduct() {
@@ -58,7 +55,7 @@ class ListProductComponent extends React.Component {
                                         <td> {product.nome}</td>
                                         <td> {product.descricao}</td>
                                         <td>
-                                            <button className="btn btn-danger" onClick={this.deleteProduct(product.codigo)}>Excluir</button>
+                                            <button className="btn btn-danger" onClick={() => this.deleteProduct(product.codigo)}>Excluir</button>
                                         </td>
                                     </tr>
                                 )
