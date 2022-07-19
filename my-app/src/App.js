@@ -7,6 +7,8 @@ import ListProductComponent from './components/ListProductComponent'
 import CreateProductComponent from './components/CreateProductComponent'
 import DeleteProductComponent from './components/DeleteProductComponent';
 import UpdateProductComponent from './components/UpdateProductComponent';
+import Login from './components/Login';
+
 
 function App() {
   return (<div>
@@ -14,10 +16,12 @@ function App() {
       <HeaderComponent />
       <div className="container">
         <Switch>
+          <Route path="/" exact component={Login} ></Route>
           <Route path="/" exact component={ListProductComponent} ></Route>
           <Route path="/add-product" component={CreateProductComponent} ></Route>
           <Route path="/delete-product/:codigo" component={DeleteProductComponent} ></Route>
           <Route path="/update-product/:codigo" component={UpdateProductComponent} ></Route>
+
         </Switch>
       </div>
       <FooterComponent />

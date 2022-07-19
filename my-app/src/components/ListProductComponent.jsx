@@ -60,7 +60,7 @@ class ListProductComponent extends React.Component {
                                         <td> {product.descricao}</td>
                                         <td>
                                             <button className="btn btn-danger" onClick={() => this.deleteProduct(product.codigo)}>Excluir</button>
-                                            <button className="btn btn-info" onClick={() => this.updateProduct(product.codigo)}>Alterar</button>
+                                            <button style={{ marginLeft: "10px" }} className="btn btn-info" onClick={() => this.updateProduct(product.codigo)}>Alterar</button>
                                         </td>
                                     </tr>
                                 )
