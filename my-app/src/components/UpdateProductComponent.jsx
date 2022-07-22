@@ -25,8 +25,8 @@ class UpdateProductComponent extends Component {
 
     }
 
-    productList() {
-        this.props.history.push('/')
+    productList() { 
+        this.props.history.push('/products')
     }
 
     changeNome = (event) => {

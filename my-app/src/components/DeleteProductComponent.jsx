@@ -1,3 +1,4 @@
+
 import React from "react";
 import ProductServices from "../services/ProductServices";
 
@@ -14,7 +15,7 @@ class DeleteProductComponent extends React.Component {
     }
 
     productList() {
-        this.props.history.push('/')
+        this.props.history.push('/products')
     }
 
     async componentDidMount() {

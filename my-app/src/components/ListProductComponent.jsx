@@ -12,11 +12,15 @@ class ListProductComponent extends React.Component {
         this.addProduct = this.addProduct.bind(this);
     }
 
-    componentDidMount() {
-        ProductServices.getProduts().then(res => {
+    async componentDidMount() {
+        let res = await ProductServices.getProduts();
+
+        if (res == 403) {
+            this.props.history.push('/')
+        }
+        else {
             this.setState({ products: res.data })
-            console.log(res.data)
-        })
+        }
     }
 
     addProduct() {

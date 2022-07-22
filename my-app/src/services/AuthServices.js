@@ -1,13 +1,18 @@
-import axios from "axios"
 
-const BASE_URL = 'https://app12759.herokuapp.com/usuarios/login'
+import api from './ApiInterceptor'
 
 class AuthServices {
 
     login(credenciais) {
-        axios.post(BASE_URL, credenciais).then(x => {
-            console.log(x.data)
-        })
+        return api.post('usuarios/login', credenciais)
+    }
+
+    setLoggedUser(token_user) {
+        localStorage.setItem('token_user', token_user)
+    }
+
+    getLoggedUser() {
+        return localStorage.getItem('token_user')
     }
 
 }

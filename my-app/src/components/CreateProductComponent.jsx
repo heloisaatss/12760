@@ -19,7 +19,7 @@ class CreateProductComponent extends Component {
     }
 
     productList() {
-        this.props.history.push('/')
+        this.props.history.push('/products')
     }
 
     changeCodigo = (event) => {

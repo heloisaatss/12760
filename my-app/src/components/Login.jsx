@@ -10,21 +10,30 @@ class Login extends React.Component {
         }
     }
 
-    sendLogin = (event) => {
+
+    sendLogin = async (event) => {
         event.preventDefault();
 
-        let credenciais = {
+        let credencias = {
             usuario: this.state.usuario,
             senha: this.state.senha
         }
 
-        AuthServices.login(credenciais).then(x => alert('Login ok!' + x.data))
+
+        let res = await AuthServices.login(credencias)
+        AuthServices.setLoggedUser(res.data)
+
+        this.props.history.push('/products')
+
     }
+
+
 
     render() {
         return (<div className="container d-flex justify-content-center">
             <div className="card mt-5 w-50">
                 <div className="card-body">
+
                     <form onSubmit={this.sendLogin}>
                         <div className="form-group">
                             <label htmlFor="txtUsuario">Usuário</label>
@@ -34,24 +43,25 @@ class Login extends React.Component {
                                 placeholder="Usuário"
                                 value={this.state.usuario}
                                 onChange={e => this.setState({ usuario: e.target.value })}
-                            ></input>
+                            >
+                            </input>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="txtSenha">Usuário</label>
+                            <label htmlFor="txtSenha">Senha</label>
                             <input id="txtSenha"
                                 type="password"
                                 className="form-control"
                                 placeholder="Senha"
                                 value={this.state.senha}
                                 onChange={e => this.setState({ senha: e.target.value })}
-                            ></input>
+                            >
+                            </input>
                         </div>
 
-                        <button type="input">Salvar</button>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </form>
                 </div>
             </div>
-
         </div>)
     }
 }

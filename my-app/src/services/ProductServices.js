@@ -1,20 +1,22 @@
-import axios from 'axios'
 
-const BASE_URL = "https://app12759.herokuapp.com/prd"
+import api from './ApiInterceptor'
 
 class ProductServices {
 
-    getProduts() {
-        return axios.get(BASE_URL);
+    async getProduts() {
+        try {
+            return await api.get('produtos');
+
+        } catch (err) {
+            console.log(err)
+            return err.response.status
+        }
     }
 
     async getProdutByCodigo(codigo) {
-        let URL = BASE_URL + '/' + codigo;
-
         let product = ''
-
         try {
-            product = await (await axios.get(URL)).data;
+            product = await (await api.get('produtos/' + codigo)).data;
             console.log('json, resposta da api => ' + product.nome)
 
         } catch (error) {
@@ -26,13 +28,17 @@ class ProductServices {
 
 
     createProduct(product) {
-        return axios.post(BASE_URL, product)
+        return api.post('produtos', product)
     }
 
     deleteProduct(codigo) {
-        let URL = BASE_URL + '/' + codigo;
-        return axios.delete(URL)
+        return api.delete('produtos/' + codigo)
+    }
+
+    updateProduct(product) {
+        return api.put('produtos/' + product.codigo, product)
     }
 
 }
+
 export default new ProductServices()
