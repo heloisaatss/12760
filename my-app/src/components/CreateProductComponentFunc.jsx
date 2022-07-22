@@ -53,7 +53,6 @@ function CreateProductComponentFunc() {
                         <button className="btn btn-secondary">Cancelar</button>
                     </form>
                 </div>
-                <label>{codigo}</label>
             </div>
         </div>
     </div>)
