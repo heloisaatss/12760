@@ -12,6 +12,7 @@ import UpdateProductComponent from './components/UpdateProductComponent';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
 import AuthServices from './services/AuthServices';
+import CreateProductFormHook from './components/CreateProductFormHook';
 
 function App() {
 
