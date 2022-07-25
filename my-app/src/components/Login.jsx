@@ -23,7 +23,7 @@ class Login extends React.Component {
         let res = await AuthServices.login(credencias)
         AuthServices.setLoggedUser(res.data)
 
-        this.props.history.push('/products')
+        this.props.history.push('/projects')
 
     }
 
