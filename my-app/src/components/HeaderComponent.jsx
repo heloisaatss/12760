@@ -10,7 +10,7 @@ class HeaderComponent extends React.Component {
         return (<div>
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href="#" className="navbar-brand">Gestão de Produtos</a></div>
+                    <div><a href="#" className="navbar-brand">Gestão de Projetos</a></div>
                 </nav>
             </header>
         </div>)

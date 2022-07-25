@@ -3,16 +3,16 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HeaderComponent from './components/HeaderComponent'
 import FooterComponent from './components/FooterComponent'
-import ListProductComponent from './components/ListProductComponent'
-import CreateProductComponent from './components/CreateProductComponent'
-import CreateProductComponentFunc from './components/CreateProductComponentFunc'
+import ListProjectComponent from './components/ListProjectComponent';
+import CreateProjectComponent from './components/CreateProjectComponent';
+import CreateProjectComponentFunc from './components/CreateProjectComponentFunc';
 
-import DeleteProductComponent from './components/DeleteProductComponent';
-import UpdateProductComponent from './components/UpdateProductComponent';
+import DeleteProjectComponent from './components/DeleteProjectComponent';
+import UpdateProjectComponent from './components/UpdateProjectComponent';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
 import AuthServices from './services/AuthServices';
-import CreateProductFormHook from './components/CreateProductFormHook';
+import CreateProjectFormHook from './components/CreateProjectFormHook';
 
 function App() {
 
@@ -33,12 +33,12 @@ function App() {
       <div className="container">
         <Switch>
           <Route path="/" exact component={Login} ></Route>
-          <Route path="/products" exact component={ListProductComponent} ></Route>
-          <Route path="/add-product" >
-            {auth ? <CreateProductComponentFunc /> : <Login />}
+          <Route path="/projects" exact component={ListProjectComponent} ></Route>
+          <Route path="/add-project" >
+            {auth ? <CreateProjectComponent /> : <Login />}
           </Route>
-          <Route path="/delete-product/:codigo" component={DeleteProductComponent} ></Route>
-          <Route path="/update-product/:codigo" component={UpdateProductComponent} ></Route>
+          <Route path="/delete-project/:codigo" component={DeleteProjectComponent} ></Route>
+          <Route path="/update-project/:codigo" component={UpdateProjectComponent} ></Route>
         </Switch>
       </div>
       <FooterComponent />

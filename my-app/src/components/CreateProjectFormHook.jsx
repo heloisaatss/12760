@@ -1,11 +1,11 @@
 import React from "react";
 
 import { useForm } from 'react-hook-form';
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
 
 
-function CreateProductFormHook() {
+function CreateProjectFormHook() {
 
     const {
         register,
@@ -17,14 +17,14 @@ function CreateProductFormHook() {
 
     const onSubmit = async (data) => {
         console.log(data)
-        let res = await (await ProductServices.createProduct(data)).data
+        let res = await (await ProjectServices.createProject(data)).data
         alert(res)
     }
 
 
     return (<div className="container" >
         <div className="card col-md-6 offset-md-3 offset-md-3">
-            <h2 className="text-center">Criar Produto</h2>
+            <h2 className="text-center">Criar Projeto</h2>
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <div className="form-group">
@@ -45,4 +45,4 @@ function CreateProductFormHook() {
 }
 
 
-export default CreateProductFormHook;
+export default CreateProjectFormHook;

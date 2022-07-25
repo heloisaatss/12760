@@ -1,38 +1,38 @@
 import React from "react";
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
 
-class ListProductComponent extends React.Component {
+class ListProjectComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            products: []
+            projects: []
         }
 
-        this.addProduct = this.addProduct.bind(this);
+        this.addProject = this.addProject.bind(this);
     }
 
     async componentDidMount() {
-        let res = await ProductServices.getProduts();
+        let res = await ProjectServices.getProjects();
 
         if (res == 403) {
             this.props.history.push('/')
         }
         else {
-            this.setState({ products: res.data })
+            this.setState({ projects: res.data })
         }
     }
 
     addProduct() {
-        this.props.history.push('/add-product')
+        this.props.history.push('/add-project')
     }
 
     deleteProduct(codigo) {
-        this.props.history.push(`/delete-product/${codigo}`)
+        this.props.history.push(`/delete-project/${codigo}`)
     }
 
     updateProduct(codigo) {
-        this.props.history.push(`/update-product/${codigo}`)
+        this.props.history.push(`/update-project/${codigo}`)
     }
 
 
@@ -40,9 +40,9 @@ class ListProductComponent extends React.Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">Lista de Produtos</h2>
+                <h2 className="text-center">Lista de Projetos</h2>
                 <div className="row">
-                    <button className="btn btn-primary" onClick={this.addProduct}>Novo Produto</button>
+                    <button className="btn btn-primary" onClick={this.addProject}>Novo Projeto</button>
                 </div>
                 <hr />
                 <div className="row">
@@ -57,14 +57,14 @@ class ListProductComponent extends React.Component {
                         </thead>
                         <tbody>
                             {
-                                this.state.products.map((product, index) =>
+                                this.state.projects.map((project, index) =>
                                     <tr key={index}>
-                                        <td> {product.codigo} </td>
-                                        <td> {product.nome}</td>
-                                        <td> {product.descricao}</td>
+                                        <td> {project.codigo} </td>
+                                        <td> {project.nome}</td>
+                                        <td> {project.descricao}</td>
                                         <td>
-                                            <button className="btn btn-danger" onClick={() => this.deleteProduct(product.codigo)}>Excluir</button>
-                                            <button style={{ marginLeft: "10px" }} className="btn btn-info" onClick={() => this.updateProduct(product.codigo)}>Alterar</button>
+                                            <button className="btn btn-danger" onClick={() => this.deleteProject(project.codigo)}>Excluir</button>
+                                            <button style={{ marginLeft: "10px" }} className="btn btn-info" onClick={() => this.updateProject(project.codigo)}>Alterar</button>
                                         </td>
                                     </tr>
                                 )
@@ -79,4 +79,4 @@ class ListProductComponent extends React.Component {
     }
 }
 
-export default ListProductComponent;
+export default ListProjectComponent;

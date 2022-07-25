@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
 
-function CreateProductComponentFunc() {
+function CreateProjectComponentFunc() {
 
     const [codigo, setCodigo] = useState('')
     const [nome, setNome] = useState('')
@@ -12,13 +12,13 @@ function CreateProductComponentFunc() {
     const salvar = async (e) => {
         e.preventDefault();
 
-        let product = {
+        let project = {
             codigo: codigo,
             nome: nome,
             descricao: descricao
         }
 
-        let res = await (await ProductServices.createProduct(product)).data
+        let res = await (await ProjectServices.createProject(project)).data
         alert(res)
 
         console.log(res)
@@ -28,7 +28,7 @@ function CreateProductComponentFunc() {
     return (<div>
         <div className="container" >
             <div className="card col-md-6 offset-md-3 offset-md-3">
-                <h2 className="text-center">Criar Produto</h2>
+                <h2 className="text-center">Criar Projeto</h2>
                 <div className="card-body">
                     <form>
                         <div className="form-group">
@@ -59,4 +59,4 @@ function CreateProductComponentFunc() {
 }
 
 
-export default CreateProductComponentFunc;
+export default CreateProjectComponentFunc;

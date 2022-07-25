@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
-class CreateProductComponent extends Component {
+class CreateProjectComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -14,12 +14,12 @@ class CreateProductComponent extends Component {
 
         }
 
-        this.productList = this.productList.bind(this)
-        this.saveProduct = this.saveProduct.bind(this)
+      //  this.projectList = this.projectList.bind(this)
+       // this.saveProject = this.saveProject.bind(this)
     }
 
-    productList() {
-        this.props.history.push('/products')
+    projectList() {
+        this.props.history.push('/projects')
     }
 
     changeCodigo = (event) => {
@@ -34,45 +34,49 @@ class CreateProductComponent extends Component {
         this.setState({ descricao: event.target.value })
     }
 
-    saveProduct = async (e) => {
+    saveProject = async (e) => {
         e.preventDefault();
 
-        let product = {
+        let project = {
             codigo: this.state.codigoView,
             nome: this.state.nome,
             descricao: this.state.descricao
         }
-        let res = await (await ProductServices.createProduct(product)).data
+        let res = await (await ProjectServices.createProject(project)).data
 
         alert(res)
-        this.productList();
+        this.projectList();
     }
 
     render() {
         return (<div>
             <div className="container" >
                 <div className="card col-md-6 offset-md-3 offset-md-3">
-                    <h2 className="text-center">Criar Produto</h2>
+                    <h2 className="text-center">Criar Projeto</h2>
                     <div className="card-body">
                         <form>
                             <div className="form-group">
                                 <label>Código</label>
                                 <input placeholder="Código" name="codigo" className="form-control"
-                                    value={this.state.codigoView} onChange={this.changeCodigo}
+                                   // value={this.state.codigoView} //onChange={this.changeCodigo}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Nome</label>
                                 <input placeholder="Nome" name="nome" className="form-control"
-                                    value={this.state.nome} onChange={this.changeNome} />
+                                  //  value={this.state.nome} //onChange={this.changeNome}
+                                    />
                             </div>
                             <div className="form-group">
                                 <label>Descrição</label>
                                 <input placeholder="Descrição" name="descricao" className="form-control"
-                                    value={this.state.descricao} onChange={this.changeDescricao} />
+                                 //   value={this.state.descricao} //onChange={this.changeDescricao}
+                                    />
                             </div>
-                            <button className="btn btn-primary" onClick={this.saveProduct} >Salvar</button>
-                            <button className="btn btn-secondary" onClick={this.productList}>Cancelar</button>
+                            <button className="btn btn-primary" //</form>onClick={this.saveProject} 
+                            >Salvar</button>
+                            <button className="btn btn-secondary"//</form> onClick={this.projectList}
+                            >Cancelar</button>
                         </form>
                     </div>
                 </div>
@@ -85,4 +89,4 @@ class CreateProductComponent extends Component {
     }
 }
 
-export default CreateProductComponent;
+export default CreateProjectComponent;

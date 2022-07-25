@@ -1,8 +1,8 @@
 
 import React from "react";
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
-class DeleteProductComponent extends React.Component {
+class DeleteProjectComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -10,22 +10,22 @@ class DeleteProductComponent extends React.Component {
             descricaoView: ''
         }
 
-        this.deleteProduct = this.deleteProduct.bind(this)
-        this.productList = this.productList.bind(this);
+        this.deleteProject = this.deleteProject.bind(this)
+        this.projectList = this.projectList.bind(this);
     }
 
-    productList() {
-        this.props.history.push('/products')
+    projectList() {
+        this.props.history.push('/projects')
     }
 
     async componentDidMount() {
-        let product = await ProductServices.getProdutByCodigo(this.state.codigo);
-        this.setState({ descricaoView: product.codigo + ' - ' + product.nome + ' - ' + product.descricao })
+        let project = await ProjectServices.getProjectByCodigo(this.state.codigo);
+        this.setState({ descricaoView: project.codigo + ' - ' + project.nome + ' - ' + project.descricao })
 
 
     }
 
-    deleteProduct = async (e) => {
+    deleteProject = async (e) => {
         e.preventDefault();
         // ProductServices.deleteProduct(this.state.codigo).then(res => {
         //     alert(res.data)
@@ -33,9 +33,9 @@ class DeleteProductComponent extends React.Component {
 
 
         try {
-            let res = await ProductServices.deleteProduct(this.state.codigo)
+            let res = await ProjectServices.deleteProject(this.state.codigo)
             alert(res.data);
-            this.productList();
+            this.projectList();
 
         } catch (error) {
             alert(error)
@@ -47,16 +47,16 @@ class DeleteProductComponent extends React.Component {
         return (<div>
             <div className="container" >
                 <div className="card col-md-6 offset-md-3 offset-md-3">
-                    <h2 className="text-center">Excluir Produto</h2>
+                    <h2 className="text-center">Excluir Projeto</h2>
                     <div className="card-body">
                         <form>
                             <div className="form-group">
-                                <label>Deseja excluir o produto?</label>
+                                <label>Deseja excluir o projeto?</label>
                                 <div>{this.state.descricaoView}</div>
                             </div>
 
-                            <button className="btn btn-danger" onClick={this.deleteProduct} >Excluir</button>
-                            <button className="btn btn-secondary" onClick={this.productList}>Cancelar</button>
+                            <button className="btn btn-danger" onClick={this.deleteProject} >Excluir</button>
+                            <button className="btn btn-secondary" onClick={this.projectList}>Cancelar</button>
                         </form>
                     </div>
                 </div>
@@ -69,4 +69,4 @@ class DeleteProductComponent extends React.Component {
     }
 }
 
-export default DeleteProductComponent;
+export default DeleteProjectComponent;

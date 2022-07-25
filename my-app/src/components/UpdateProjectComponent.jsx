@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ProductServices from "../services/ProductServices";
+import ProjectServices from "../services/ProjectServices";
 
-class UpdateProductComponent extends Component {
+class UpdateProjectComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -11,22 +11,22 @@ class UpdateProductComponent extends Component {
             descricao: ''
         }
 
-        this.productList = this.productList.bind(this)
-        this.updateProduct = this.updateProduct.bind(this)
+        this.projectList = this.projectList.bind(this)
+        this.updateProject = this.updateProject.bind(this)
     }
 
     async componentDidMount() {
-        let product = await ProductServices.getProdutByCodigo(this.state.codigo);
+        let project = await ProjectServices.getProjectByCodigo(this.state.codigo);
         this.setState({
-            nome: product.nome,
-            descricao: product.descricao
+            nome: project.nome,
+            descricao: project.descricao
         })
 
 
     }
 
-    productList() { 
-        this.props.history.push('/products')
+    projectList() { 
+        this.props.history.push('/projects')
     }
 
     changeNome = (event) => {
@@ -37,25 +37,25 @@ class UpdateProductComponent extends Component {
         this.setState({ descricao: event.target.value })
     }
 
-    updateProduct = async (e) => {
+    updateProject = async (e) => {
         e.preventDefault();
 
-        let product = {
+        let project = {
             codigo: this.state.codigo,
             nome: this.state.nome,
             descricao: this.state.descricao
         }
-        let res = await (await ProductServices.updateProduct(product)).data
+        let res = await (await ProjectServices.updateProject(project)).data
 
         alert(res)
-        this.productList();
+        this.projectList();
     }
 
     render() {
         return (<div>
             <div className="container" >
                 <div className="card col-md-6 offset-md-3 offset-md-3">
-                    <h2 className="text-center">Alterar Produto</h2>
+                    <h2 className="text-center">Alterar Projeto</h2>
                     <div className="card-body">
                         <form>
                             <div className="form-group">
@@ -86,4 +86,4 @@ class UpdateProductComponent extends Component {
     }
 }
 
-export default UpdateProductComponent;
+export default UpdateProjectComponent;
